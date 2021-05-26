@@ -16,46 +16,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-pS-FW7" userLabel="RecordButton">
-                                <rect key="frame" x="133" y="286" width="148" height="155"/>
-                                <state key="normal" title="Button" image="Record"/>
-                                <connections>
-                                    <action selector="recordingOn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c7y-9E-mCk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLL-Pb-1Zw" userLabel="StopButton">
-                                <rect key="frame" x="133" y="504" width="146" height="155"/>
-                                <state key="normal" title="Button" image="Stop"/>
-                                <connections>
-                                    <action selector="recordingStopped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ple-RW-Fhd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vA5-ZB-ckU" userLabel="PlayButton">
-                                <rect key="frame" x="133" y="714" width="148" height="30"/>
-                                <state key="normal" title="PLAY"/>
-                                <connections>
-                                    <action selector="playSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Trh-He-27T"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gUz-vX-7cE">
+                                <rect key="frame" x="115.5" y="378" width="183" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-pS-FW7" userLabel="RecordButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="69"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                        <state key="normal" title="RECORD">
+                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordingOn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c7y-9E-mCk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vA5-ZB-ckU" userLabel="PlayButton">
+                                        <rect key="frame" x="0.0" y="71" width="183" height="69"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                        <state key="normal" title="PLAY"/>
+                                        <connections>
+                                            <action selector="playSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Trh-He-27T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vLL-Pb-1Zw" secondAttribute="trailing" constant="135" id="HFO-7T-fN4"/>
-                            <constraint firstItem="vLL-Pb-1Zw" firstAttribute="top" secondItem="GMT-pS-FW7" secondAttribute="bottom" constant="63" id="MLz-dD-BfH"/>
-                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GMT-pS-FW7" secondAttribute="trailing" id="UnY-Lf-Drq"/>
-                            <constraint firstItem="GMT-pS-FW7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gRS-Ld-WkP"/>
-                            <constraint firstItem="GMT-pS-FW7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="133" id="ixB-Ua-HoP"/>
-                            <constraint firstItem="vLL-Pb-1Zw" firstAttribute="leading" secondItem="GMT-pS-FW7" secondAttribute="leading" id="oac-0a-6Ci"/>
-                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="top" secondItem="vLL-Pb-1Zw" secondAttribute="bottom" constant="55" id="pG9-hB-tfJ"/>
-                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="leading" secondItem="vLL-Pb-1Zw" secondAttribute="leading" id="pqc-tO-nKW"/>
-                            <constraint firstItem="GMT-pS-FW7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="t3g-JA-oI0"/>
+                            <constraint firstItem="gUz-vX-7cE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="652-b3-xvY"/>
+                            <constraint firstItem="gUz-vX-7cE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ap2-qK-rgg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="vA5-ZB-ckU" id="jlI-om-ERw"/>
                         <outlet property="recordButton" destination="GMT-pS-FW7" id="8Q1-D5-Pon"/>
-                        <outlet property="stopButton" destination="vLL-Pb-1Zw" id="VHq-r0-eak"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -64,10 +58,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Record" width="155" height="155"/>
-        <image name="Stop" width="155" height="155"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
