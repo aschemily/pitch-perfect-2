@@ -30,19 +30,30 @@
                                     <action selector="recordingStopped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ple-RW-Fhd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vA5-ZB-ckU" userLabel="PlayButton">
+                                <rect key="frame" x="133" y="714" width="148" height="30"/>
+                                <state key="normal" title="PLAY"/>
+                                <connections>
+                                    <action selector="playSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Trh-He-27T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vLL-Pb-1Zw" secondAttribute="trailing" constant="135" id="HFO-7T-fN4"/>
                             <constraint firstItem="vLL-Pb-1Zw" firstAttribute="top" secondItem="GMT-pS-FW7" secondAttribute="bottom" constant="63" id="MLz-dD-BfH"/>
+                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GMT-pS-FW7" secondAttribute="trailing" id="UnY-Lf-Drq"/>
                             <constraint firstItem="GMT-pS-FW7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gRS-Ld-WkP"/>
                             <constraint firstItem="GMT-pS-FW7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="133" id="ixB-Ua-HoP"/>
                             <constraint firstItem="vLL-Pb-1Zw" firstAttribute="leading" secondItem="GMT-pS-FW7" secondAttribute="leading" id="oac-0a-6Ci"/>
+                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="top" secondItem="vLL-Pb-1Zw" secondAttribute="bottom" constant="55" id="pG9-hB-tfJ"/>
+                            <constraint firstItem="vA5-ZB-ckU" firstAttribute="leading" secondItem="vLL-Pb-1Zw" secondAttribute="leading" id="pqc-tO-nKW"/>
                             <constraint firstItem="GMT-pS-FW7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="t3g-JA-oI0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="vA5-ZB-ckU" id="jlI-om-ERw"/>
                         <outlet property="recordButton" destination="GMT-pS-FW7" id="8Q1-D5-Pon"/>
                         <outlet property="stopButton" destination="vLL-Pb-1Zw" id="VHq-r0-eak"/>
                     </connections>
