@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B4F2A772662D1890051773D /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F2A762662D1890051773D /* PlaySoundsViewController.swift */; };
 		4BA94FF8265D9269006AE949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA94FF7265D9269006AE949 /* AppDelegate.swift */; };
 		4BA94FFA265D9269006AE949 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA94FF9265D9269006AE949 /* SceneDelegate.swift */; };
-		4BA94FFC265D9269006AE949 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA94FFB265D9269006AE949 /* ViewController.swift */; };
+		4BA94FFC265D9269006AE949 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA94FFB265D9269006AE949 /* RecordViewController.swift */; };
 		4BA94FFF265D9269006AE949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA94FFD265D9269006AE949 /* Main.storyboard */; };
 		4BA95001265D926A006AE949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA95000265D926A006AE949 /* Assets.xcassets */; };
 		4BA95004265D926A006AE949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA95002265D926A006AE949 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B4F2A762662D1890051773D /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		4BA94FF4265D9269006AE949 /* pitch perfect 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pitch perfect 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA94FF7265D9269006AE949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BA94FF9265D9269006AE949 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4BA94FFB265D9269006AE949 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4BA94FFB265D9269006AE949 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		4BA94FFE265D9269006AE949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BA95000265D926A006AE949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BA95003265D926A006AE949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,11 +60,12 @@
 			children = (
 				4BA94FF7265D9269006AE949 /* AppDelegate.swift */,
 				4BA94FF9265D9269006AE949 /* SceneDelegate.swift */,
-				4BA94FFB265D9269006AE949 /* ViewController.swift */,
+				4BA94FFB265D9269006AE949 /* RecordViewController.swift */,
 				4BA94FFD265D9269006AE949 /* Main.storyboard */,
 				4BA95000265D926A006AE949 /* Assets.xcassets */,
 				4BA95002265D926A006AE949 /* LaunchScreen.storyboard */,
 				4BA95005265D926A006AE949 /* Info.plist */,
+				4B4F2A762662D1890051773D /* PlaySoundsViewController.swift */,
 			);
 			path = "pitch perfect 2";
 			sourceTree = "<group>";
@@ -137,8 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA94FFC265D9269006AE949 /* ViewController.swift in Sources */,
+				4BA94FFC265D9269006AE949 /* RecordViewController.swift in Sources */,
 				4BA94FF8265D9269006AE949 /* AppDelegate.swift in Sources */,
+				4B4F2A772662D1890051773D /* PlaySoundsViewController.swift in Sources */,
 				4BA94FFA265D9269006AE949 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

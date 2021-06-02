@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordViewController.swift
 //  pitch perfect 2
 //
 //  Created by Emily Asch on 5/25/21.
@@ -8,10 +8,11 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var soundRecorder: AVAudioRecorder!
     var soundPlayer: AVAudioPlayer!
@@ -60,14 +61,26 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
         
     }
     
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        playButton.isEnabled = true
-    }
+//    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+//        
+//        if flag{
+//            playButton.isEnabled = true
+//            performSegue(withIdentifier: "nextButton", sender: soundRecorder.url)
+//        }else{
+//            print("recording not successful")
+//        }
+//    }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        recordButton.isEnabled = false
-        playButton.setTitle("PLAY", for: .normal)
+            recordButton.isEnabled = true
+            playButton.setTitle("PLAY", for: .normal)
+            recordButton.isEnabled = false
+        
+        //print("audio finished playing")
+        
     }
+    
+    
     
     
     @IBAction func recordingOn(_ sender: Any) {
@@ -76,6 +89,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
             soundRecorder.record()
             recordButton.setTitle("STOP", for: .normal)
             playButton.isEnabled = false
+            
         }else{
             soundRecorder.stop()
             recordButton.setTitle("RECORD", for: .normal)
@@ -93,17 +107,46 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
             recordButton.isEnabled = false
             setupPlayer()
             soundPlayer.play()
+        
         }else{
             soundPlayer.stop()
             playButton.setTitle("PLAY", for: .normal)
             recordButton.isEnabled = false
         }
+        
+        
     
     }
     
     
+    @IBAction func sendSound(_ sender: Any) {
+        print("hitting next to send sound")
+        soundRecorder.delegate = self
+        performSegue(withIdentifier: "sendSound", sender: soundRecorder.url)
+        
+        print("in send sound", soundRecorder.delegate = self)
+    }
     
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        
+        if flag{
+            playButton.isEnabled = true
+            print("audio finished recording")
+        }else{
+            print("recording not successful")
+        }
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendSound"{
+            let playSoundsVC = segue.destination as! PlaySoundsViewController
+            let recordedSoundURL = sender as! URL
+            playSoundsVC.recordedSoundURL = recordedSoundURL
+            print("sending sound", recordedSoundURL)
+        }
+    }
+    
+    
 
 }
 
