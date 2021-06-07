@@ -123,8 +123,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         print("hitting next to send sound")
         soundRecorder.delegate = self
         performSegue(withIdentifier: "sendSound", sender: soundRecorder.url)
-        
-        print("in send sound", soundRecorder.delegate = self)
+      //  soundRecorder.delegate = self
+       // print("in send sound", soundRecorder.delegate = self)
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {

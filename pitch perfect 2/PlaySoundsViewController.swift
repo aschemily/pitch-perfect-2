@@ -33,10 +33,27 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // loadRadio(radioURL: (radioStation?.streamURL)!)
 
         // Do any additional setup after loading the view.
         
     }
+    
+    
+    func play(url:URL) {
+         do {
+            soundPlayer = try AVAudioPlayer(contentsOf: url as URL)
+            soundPlayer.prepareToPlay()
+            soundPlayer.volume = 2.0
+            soundPlayer.rate = 4.5
+            soundPlayer.play()
+         } catch let error as NSError {
+             print(error.localizedDescription)
+         } catch {
+             print("AVAudioPlayer init failed")
+         }
+         
+     }
     
     
     
@@ -45,25 +62,61 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
         switch(ButtonType(rawValue: sender.tag)!) {
            case .slow:
             if let recordedSoundURL = recordedSoundURL{
-                print(recordedSoundURL)
+                print("sound uRL", recordedSoundURL)
+            
+                //soundPlayer.rate = 0.2
+                play(url: recordedSoundURL)
+                
                
+               
+
             }
             print("slow")
             
                
            case .fast:
+            if let recordedSoundURL = recordedSoundURL{
+                print("sound uRL", recordedSoundURL)
+             play(url: recordedSoundURL)
+               
+
+            }
             print("fast")
                
            case .high:
+            if let recordedSoundURL = recordedSoundURL{
+                print("sound uRL", recordedSoundURL)
+             play(url: recordedSoundURL)
+               
+
+            }
             print("high")
                
            case .low:
+            if let recordedSoundURL = recordedSoundURL{
+                print("sound uRL", recordedSoundURL)
+             play(url: recordedSoundURL)
+               
+
+            }
             print("low")
                
            case .echo:
+            if let recordedSoundURL = recordedSoundURL{
+                print("sound uRL", recordedSoundURL)
+             play(url: recordedSoundURL)
+               
+
+            }
             print("echo")
                
            case .reverb:
+            if let recordedSoundURL = recordedSoundURL{
+                print("sound uRL", recordedSoundURL)
+             play(url: recordedSoundURL)
+               
+
+            }
             print("reverb")
                
            }
