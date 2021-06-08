@@ -12,6 +12,7 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     
     var recordedSoundURL: URL!
     var soundPlayer: AVAudioPlayer!
+    var audioPlayerNode: AVAudioPlayerNode!
 
     @IBOutlet weak var fastButton: UIButton!
     @IBOutlet weak var slowButton: UIButton!
@@ -40,12 +41,37 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     }
     
     
-    func play(url:URL) {
+    func play(url:URL, rate: Float, pitch: Float, echo: Float, reverb: Float) {
+        // Initialize variables
+         let audioEngine = AVAudioEngine()
+          audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attach(audioPlayerNode)
+
+          // Setting the pitch
+          let pitchEffect = AVAudioUnitTimePitch()
+          pitchEffect.pitch = pitch
+        audioEngine.attach(pitchEffect)
+
+          // Setting the platback-rate
+          let playbackRateEffect = AVAudioUnitVarispeed()
+          playbackRateEffect.rate = rate
+        audioEngine.attach(playbackRateEffect)
+
+          // Setting the reverb effect
+          let reverbEffect = AVAudioUnitReverb()
+        reverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.cathedral)
+          reverbEffect.wetDryMix = reverb
+        audioEngine.attach(reverbEffect)
+
+          // Setting the echo effect on a specific interval
+          let echoEffect = AVAudioUnitDelay()
+        audioEngine.attach(echoEffect)
+        
          do {
             soundPlayer = try AVAudioPlayer(contentsOf: url as URL)
             soundPlayer.prepareToPlay()
             soundPlayer.volume = 2.0
-            soundPlayer.rate = 4.5
+           
             soundPlayer.play()
          } catch let error as NSError {
              print(error.localizedDescription)
@@ -63,12 +89,8 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .slow:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-            
-                //soundPlayer.rate = 0.2
-                play(url: recordedSoundURL)
-                
-               
-               
+        
+                play(url: recordedSoundURL, rate: 0.5, pitch: 2, echo: 0, reverb: 0)
 
             }
             print("slow")
@@ -77,7 +99,8 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .fast:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-             play(url: recordedSoundURL)
+            
+                play(url: recordedSoundURL, rate: 1.5, pitch: 0, echo: 0, reverb: 0)
                
 
             }
@@ -86,7 +109,7 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .high:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-             play(url: recordedSoundURL)
+                play(url: recordedSoundURL, rate: 2, pitch: 1000, echo: 0, reverb: 0)
                
 
             }
@@ -95,7 +118,7 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .low:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-             play(url: recordedSoundURL)
+                play(url: recordedSoundURL, rate: 2, pitch: -1000, echo: 0, reverb: 0)
                
 
             }
@@ -104,7 +127,7 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .echo:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-             play(url: recordedSoundURL)
+                play(url: recordedSoundURL, rate: 0, pitch: 0, echo: 2, reverb: 0)
                
 
             }
@@ -113,7 +136,7 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
            case .reverb:
             if let recordedSoundURL = recordedSoundURL{
                 print("sound uRL", recordedSoundURL)
-             play(url: recordedSoundURL)
+                play(url: recordedSoundURL, rate: 0, pitch: 0, echo: 0, reverb: 2)
                
 
             }
@@ -123,20 +146,6 @@ class PlaySoundsViewController: UIViewController, AVAudioRecorderDelegate, AVAud
         
     }
 
-//    @IBAction func stopButtonPressed(_ sender: AnyObject) {
-//        print("Stop Audio Button Pressed")
-//    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 
 }
